@@ -1,0 +1,80 @@
+# Kubescape Operator values for resource-constrained environment (2 vCPU / 7.6 GiB)
+# Only essential components enabled; resources tightly limited.
+
+clusterName: cks-security-lab
+
+# Disable capabilities that are not needed for the initial SBOM/scanning workflow
+capabilities:
+  continuousScan: disable
+  networkPolicyGeneration: disable
+  vulnerabilityScan: enable
+
+# Operator (lightweight)
+operator:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
+
+# Kubescape scanner (configuration scanning)
+kubescape:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+
+# Node-agent (DaemonSet, runs on the single node)
+nodeAgent:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 150m
+      memory: 256Mi
+
+# KubeVuln (image vulnerability scanning) - heavier, limit carefully
+kubevuln:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 150m
+      memory: 512Mi
+
+# Storage (needed for results)
+storage:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 100m
+      memory: 256Mi
+
+# Synchronizer (lightweight)
+synchronizer:
+  resources:
+    requests:
+      cpu: 20m
+      memory: 32Mi
+    limits:
+      cpu: 50m
+      memory: 64Mi
+
+# Disable components not needed for this lab
+kubescapeScheduler:
+  enabled: false
+kubevulnScheduler:
+  enabled: false
+prometheusExporter:
+  enabled: false
+otelCollector:
+  enabled: false

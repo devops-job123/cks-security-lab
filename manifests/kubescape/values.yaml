@@ -1,0 +1,73 @@
+# Kubescape Operator values for resource-constrained environment (2 vCPU / 7.6 GiB)
+# Only essential components enabled; resources tightly limited.
+
+clusterName: cks-security-lab
+
+# Enable offline Grype DB to bypass network update hangs
+grypeOfflineDB:
+  enabled: true
+
+capabilities:
+  continuousScan: disable
+  networkPolicyGeneration: disable
+  vulnerabilityScan: enable
+
+operator:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
+
+kubescape:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+
+nodeAgent:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 150m
+      memory: 256Mi
+
+# kubevuln disabled temporarily due to upstream Grype DB update hang
+# (readiness probe stuck at "updating grype DB"; known upstream issue)
+kubevuln:
+  enabled: false
+
+storage:
+  enabled: true
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 100m
+      memory: 256Mi
+
+synchronizer:
+  resources:
+    requests:
+      cpu: 20m
+      memory: 32Mi
+    limits:
+      cpu: 50m
+      memory: 64Mi
+
+kubescapeScheduler:
+  enabled: false
+kubevulnScheduler:
+  enabled: false
+prometheusExporter:
+  enabled: false
+otelCollector:
+  enabled: false
