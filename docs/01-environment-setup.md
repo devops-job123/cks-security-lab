@@ -23,7 +23,7 @@
 ## Constraints & Mitigation
 - CPU requests at 60%: limit new components to essential only
 - No Falco
-- Use syft/trivy/grype (lighter than full Falco stack)
+- Use syft/trivy/grype
 - Scale Headlamp to 0 when idle
 
 ## Tools Available
