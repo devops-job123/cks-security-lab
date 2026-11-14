@@ -1,0 +1,18 @@
+NAME      INSTALLED  FIXED IN  TYPE    VULNERABILITY        SEVERITY  EPSS         RISK   
+urllib3   1.26.20    2.6.3     python  GHSA-38jv-5279-wg99  High      2.9% (87th)  2.3    
+requests  2.28.0     2.31.0    python  GHSA-j8r2-6x86-q33q  Medium    3.0% (87th)  1.7    
+urllib3   1.26.20    2.6.0     python  GHSA-2xpw-w6gg-jr37  High      0.7% (54th)  0.6    
+urllib3   1.26.20    2.6.0     python  GHSA-gm62-xv2j-4w53  High      0.7% (54th)  0.6    
+requests  2.28.0     2.32.4    python  GHSA-9hjg-9r4m-mvj7  Medium    1.0% (63rd)  0.5    
+urllib3   1.26.20    2.8.0     python  GHSA-vxq7-64xx-v4gw  High      0.3% (27th)  0.3    
+pip       25.1.1     25.3      python  GHSA-4xh5-x5gv-qwph  Medium    0.5% (42nd)  0.3    
+urllib3   1.26.20    2.5.0     python  GHSA-pq67-6m6q-mj2v  Medium    0.5% (41st)  0.2    
+urllib3   1.26.20    2.7.0     python  GHSA-qccp-gfcp-xxvc  High      0.3% (26th)  0.2    
+requests  2.28.0     2.32.0    python  GHSA-9wx4-h78v-vm56  Medium    0.3% (27th)  0.2    
+pip       25.1.1     26.1.2    python  GHSA-wf93-45jw-7689  Medium    0.3% (25th)  0.2    
+urllib3   1.26.20    2.8.0     python  GHSA-8988-9cw3-xx77  High      0.2% (10th)  0.2    
+pip       25.1.1     26.2.0    python  GHSA-qwm4-qh6w-59xr  Medium    0.3% (22nd)  0.2    
+pip       25.1.1     26.0      python  GHSA-6vgw-5pg2-w6jp  Low       0.4% (38th)  0.1    
+requests  2.28.0     2.33.0    python  GHSA-gc5v-m9x4-r6x2  Medium    0.2% (9th)   < 0.1  
+pip       25.1.1     26.1      python  GHSA-jp4c-xjxw-mgf9  Medium    0.1% (3rd)   < 0.1  
+pip       25.1.1     26.1      python  GHSA-58qw-9mgm-455v  Medium    0.1% (3rd)   < 0.1
