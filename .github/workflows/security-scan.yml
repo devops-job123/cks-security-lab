@@ -1,0 +1,51 @@
+name: Security Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  sbom-and-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Syft
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sudo sh -s -- -b /usr/local/bin
+
+      - name: Install Grype
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sudo sh -s -- -b /usr/local/bin
+
+      - name: Install Python dependencies
+        run: |
+          cd embedded-app
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+
+      - name: Generate SBOM
+        run: |
+          syft dir:embedded-app -o cyclonedx-json > embedded-python-sbom.json
+
+      - name: Scan SBOM with Grype
+        run: |
+          grype sbom:embedded-python-sbom.json > grype-report.txt
+          cat grype-report.txt
+
+      - name: Upload SBOM and report
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-artifacts
+          path: |
+            embedded-python-sbom.json
+            grype-report.txt
